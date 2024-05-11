@@ -3,10 +3,10 @@ import java.util.Map;
 public class LSystem {
 
     public String axiom;
-    public int angle;
+    public float angle;
     public Map<Character, String> rules;
 
-    public LSystem(String axiom, int angle, Map<Character, String> rules) {
+    public LSystem(String axiom, float angle, Map<Character, String> rules) {
         this.axiom = axiom;
         this.angle = angle;
         this.rules = rules;
@@ -36,7 +36,10 @@ public class LSystem {
         return axiom;
     }
 
-    public int getAngle(){
+    public float getAngle(){
         return angle;
     }
 }
+
+
+//recursividad??????????????????????
