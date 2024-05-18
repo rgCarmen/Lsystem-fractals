@@ -13,15 +13,16 @@ public class Main {
         //LSystem f = new LSystem("F+F+F+F", 90, rule);
 
         //rule.put('F',"F-FF+FF+F+F-F-FF+F+F-F-FF-FF+F");
-        //LSystem f= new LSystem("F+F+F+F", 90, rule);
+        rule.put('X',"XF+F+XF-F-F-XF-F+F+F-F+F+F-X");
+        LSystem f= new LSystem("XF+F+XF+F+XF+F", 60, rule);
 
 
         //rule.put('F',"FF");
         //rule.put('X', "F-[[X]+X]+F[+FX]-X");
         //LSystem f= new LSystem("X", (float) 22.5, rule);
 
-        rule.put('F',"F[+F]F");
-        LSystem f=new LSystem("F", 10, rule);
+        //rule.put('F',"F[+F]F");
+        //LSystem f=new LSystem("F", 10, rule);
 
         //dragon
         //rule.put('l', "l+rF+");
@@ -30,7 +31,7 @@ public class Main {
 
         //rule.put('F',"FF+F-F+F");
         //LSystem f = new LSystem("F+F+F+F", 60, rule);
-        f.iterations(6);
+        f.iterations(3);
         System.out.println(f.getAxiom());
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("L-Systems Demo");
