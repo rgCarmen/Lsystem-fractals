@@ -1,2 +1,1 @@
 # Lsystem-fractals
-s
