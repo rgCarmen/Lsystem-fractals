@@ -38,8 +38,10 @@ public class Paint extends JPanel {
 
         double startX = getWidth()/2 ;
         double startY = getHeight()/2;
-        double length = 10;
+        double length = 20;
         float angle = this.angle;
+
+        int line=0;
 
         for (int i = 0; i < Lfractal.length(); i++) {
             char c = Lfractal.charAt(i);
@@ -47,6 +49,7 @@ public class Paint extends JPanel {
                 double endX = startX +  (Math.cos(Math.toRadians(angle)) * length);
                 double endY = startY -(Math.sin(Math.toRadians(angle)) * length); 
                 g2d.drawLine( (int) startX, (int) startY, (int) endX, (int) endY);
+                line++;
                 startX = endX;
                 startY = endY;
             } else if (c=='f'){
@@ -69,6 +72,7 @@ public class Paint extends JPanel {
                     }
                 }
         }
+        System.out.println("Lines drawn:"+line);
     }
 
     

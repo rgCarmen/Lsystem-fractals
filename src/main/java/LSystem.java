@@ -48,7 +48,6 @@ public class LSystem {
                 break;
             }
         }
-
         return s;
     }
 
@@ -115,16 +114,17 @@ public class LSystem {
         List<Future<String>> futures = new ArrayList<>();
 
         String string = axiom;
+        int iter=0;
 
-        if (string.length() == numThreads) {
+        if (string.length() < numThreads) {
             string = applyRule(string);
-            iterations -= 1;
+            iter=1;
         }
 
         for (int i = 0; i < string.length(); i++) {
-
+            int totaliter=iterations-iter;
             String substring = string.substring(i, i + 1);
-            Callable<String> task = () -> applyRule(substring, iterations);
+            Callable<String> task = () -> applyRule(substring, totaliter);
             futures.add(executor.submit(task));
 
         }
@@ -140,6 +140,36 @@ public class LSystem {
         return resultBuilder.toString();
     }
 
+    public String getFractalParallelIter() throws InterruptedException, ExecutionException {
+        int numThreads = Runtime.getRuntime().availableProcessors();
+        ExecutorService executor = Executors.newFixedThreadPool(numThreads);
+    
+        String string = axiom;
+        for (int iter = 0; iter < iterations; iter++) {
+            List<Future<String>> futures = new ArrayList<>();
+
+
+            //por cada iteracion
+            for (int i = 0; i < string.length(); i++) {
+                String character = string.substring(i, i + 1);
+                //aplicar la regla a cada caracter 
+                Callable<String> task = () -> applyRule(character,1);
+                futures.add(executor.submit(task));
+            }
+    
+            StringBuilder nextStringBuilder = new StringBuilder();
+            for (Future<String> future : futures) {
+                nextStringBuilder.append(future.get());
+            }
+    
+            string = nextStringBuilder.toString();
+        }
+    
+        executor.shutdown();
+        executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+    
+        return string;
+    }
     
 
 }

@@ -29,5 +29,3 @@ rule.put('F',"FF+F-F+F");
 LSystem f = new LSystem("F+F+F+F", 60, rule);
 
 
-rule.put('X',"XF+F+XF-F-F-XF-F+F+F-F+F+F-X");
-LSystem f= new LSystem("XF+F+XF+F+XF+F", 60, rule);
