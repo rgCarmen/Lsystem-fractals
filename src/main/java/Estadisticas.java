@@ -24,7 +24,7 @@ public class Estadisticas extends ApplicationFrame {
     }
 
     public XYSeriesCollection obtenerTiempo(LSystem l) throws InterruptedException, ExecutionException {
-        int[] iterations = {5,6,7}; // Example iteration values
+        int[] iterations = {6,7,8}; // Example iteration values
         int numRuns = 3; // Number of runs to average
 
         XYSeries dataset1 = new XYSeries("Secuencial");
@@ -121,8 +121,9 @@ public class Estadisticas extends ApplicationFrame {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
         Map<Character, String> rule = new HashMap<>();
-        rule.put('X',"XF+F+XF-F-F-XF-F+F+F-F+F+F-X");
-        LSystem f= new LSystem("XF+F+XF+F+XF+F", 60, rule);
+        rule.put('F',"FF");
+        rule.put('X', "F-[[X]+X]+F[+FX]-X");
+        LSystem f= new LSystem("X", (float) 22.5, rule);
 
 
         Estadisticas chart = new Estadisticas("Fractal Generation Performance");

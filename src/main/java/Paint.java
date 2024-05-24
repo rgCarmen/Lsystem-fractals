@@ -29,6 +29,7 @@ public class Paint extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        long startTime = System.nanoTime();
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -38,10 +39,9 @@ public class Paint extends JPanel {
 
         double startX = getWidth()/2 ;
         double startY = getHeight()/2;
-        double length = 20;
+        double length = 5;
         float angle = this.angle;
 
-        int line=0;
 
         for (int i = 0; i < Lfractal.length(); i++) {
             char c = Lfractal.charAt(i);
@@ -49,7 +49,6 @@ public class Paint extends JPanel {
                 double endX = startX +  (Math.cos(Math.toRadians(angle)) * length);
                 double endY = startY -(Math.sin(Math.toRadians(angle)) * length); 
                 g2d.drawLine( (int) startX, (int) startY, (int) endX, (int) endY);
-                line++;
                 startX = endX;
                 startY = endY;
             } else if (c=='f'){
@@ -72,7 +71,10 @@ public class Paint extends JPanel {
                     }
                 }
         }
-        System.out.println("Lines drawn:"+line);
+        
+        long finalTime= System.nanoTime()-startTime;
+
+        System.out.println("Tiempo transcurrido en dibujar: " + finalTime/1000000 + " ms");
     }
 
     
