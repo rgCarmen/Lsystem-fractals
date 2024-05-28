@@ -17,26 +17,26 @@ public class Main {
         // rule.put('F',"F-FF+FF+F+F-F-FF+F+F-F-FF-FF+F");
         // LSystem f= new LSystem("F+F+F+F", 90, rule);
 
-        //rule.put('F',"FF");
-        //rule.put('X', "F-[[X]+X]+F[+FX]-X");
-        //LSystem f= new LSystem("X", (float) 22.5, rule);
+        rule.put('F',"FF");
+        rule.put('X', "F-[[X]+X]+F[+FX]-X");
+        LSystem f= new LSystem("X", (float) 22.5, rule);
 
-        rule.put('F', "F[+F]F");
-        LSystem f = new LSystem("F", 10, rule);
+        //rule.put('F', "F[+F]F");
+        //LSystem f = new LSystem("F", 30, rule);
 
         //rule.put('X',"XF+F+XF-F-F-XF-F+F+F-F+F+F-X");
         //LSystem f= new LSystem("XF+F+XF+F+XF+F", 60, rule);
 
         // dragon
-        // rule.put('l', "l+rF+");
-        // rule.put('r', "-Fl-r");
-        // LSystem f= new LSystem("Fl", 90, rule);
+         //rule.put('l', "l+rF+");
+         //rule.put('r', "-Fl-r");
+         //LSystem f= new LSystem("Fl", 90, rule);
 
-        // rule.put('F',"FF+F-F+F");
-        // LSystem f = new LSystem("F+F+F+F", 60, rule);
+        //rule.put('F',"FF+F-F+F");
+        //LSystem f = new LSystem("F+F+F+F", 60, rule);
         
         
-        f.setIteration(12);
+        f.setIteration(3);
         /* 
         double timeStart= System.nanoTime();
         String result= f.getFractal();
@@ -52,7 +52,7 @@ public class Main {
 
         
         String result2= f.getFractalParallelIter();
-        System.out.println(result2.length());
+        System.out.println(result2);
         System.out.println(result2.chars().filter(c -> c == ']').count());
 
         /*

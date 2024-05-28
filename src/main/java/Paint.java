@@ -35,11 +35,11 @@ public class Paint extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         setBackground(Color.BLACK);
         g2d.setBackground(Color.BLACK);
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.white);
 
-        double startX = getWidth()/2 ;
-        double startY = getHeight()/2;
-        double length = 5;
+        double startX = getWidth()/2;
+        double startY = getHeight()/2+150;
+        double length = 10;
         float angle = this.angle;
 
 
